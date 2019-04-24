@@ -21,15 +21,17 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          {/* <ul>
+          <ul>
             {
-              this.state.names.map(name => <li>{name}</li>)
+              this.state.names.map((name, i) => (                
+                <li key={i}>{name}</li>
+              ))
             }
-          </ul> */}
+          </ul>
 
-          {<input 
+          {/* <input 
             onChange={ this._updateInputText }
-          />}
+          />
   
           <Output
             text={this.state.inputText}
@@ -37,7 +39,7 @@ class App extends React.Component {
           <Output
             text={this.state.inputText}
             transform="l33t"
-          />
+          /> */}
         </header>
       </div>
     );
