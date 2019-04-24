@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+
 import Output from './Output';
 
 class App extends React.Component {
@@ -12,32 +13,63 @@ class App extends React.Component {
     };
   }
 
-  render() {
+  render () {
+    console.log('Rendering App');
+    console.log(`Top of App.render, State is now ${this.state.inputText}`);
 
-  return (
-    <div className="App">
-      <header className="App-header">
+    const names = ["oakley", "milla", "angela"];
+    
+    return (
+      <div className="App">
+        <header className="App-header">
+          <ul>
+            {
+              names.map(n => <li>{n}</li>)
+            }
+          </ul>
 
-      <img src={logo} className="App-logo" alt="logo" />
+          {/* {<input 
+            onChange={ this._updateInputText }
+          />*/}
+  
+          {/*<Output
+            text={this.state.inputText}
+          />} */}
+        </header>
+      </div>
+    );
+  }
 
-        <input 
-          onChange={ (e) => {
-            console.log('You are typing');
-            console.log(e.target.value);
+  _updateInputText = (e) => {
+  
+    console.log('onChange event fired');
+    console.log(e.target.value);
 
-            this.setState({
-              inputText: e.target.value
-            });
-
-          } }
-        />
-
-          <Output 
-          text={this.state.inputText} />
-      </header>
-    </div>
-  );
-}
+    // This is a request for a change
+    // that will take place in the future.
+    this.setState({
+      inputText: e.target.value
+    }, () => {
+      console.log(`After setState, State is now ${this.state.inputText}`);
+    });
+    
+  }
 }
 
 export default App;
+
+
+// JSX
+{/* <div className="cat">
+  Oakley
+</div> */}
+
+// JavaScript
+// React.createElement("div", { className: "cat"}, "Oakley");
+
+// React Element
+// {
+//   type: "div", {
+//     className: "cat"
+//   }, "Milla"
+// }
